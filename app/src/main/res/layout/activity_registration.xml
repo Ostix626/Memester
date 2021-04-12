@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegistrationActivity"
+    tools:ignore="MissingClass">
+
 
     <Button
         android:id="@+id/signup"
@@ -13,30 +14,13 @@
         android:layout_width="340dp"
         android:layout_height="55dp"
         android:layout_marginBottom="228dp"
-        android:text="sign up"
+        android:text="register"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/white" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Username"
-        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-        android:layout_width="340dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="4dp"
-        android:hint="Memelord name"
-        android:padding="15dp"
-        android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@+id/Password"
         app:layout_constraintEnd_toEndOf="@+id/Password"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="@+id/Password"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingClass" />
+        app:strokeColor="@color/white" />
 
 
     <!--
@@ -61,35 +45,52 @@
             android:hint="Memelord name" />
     </com.google.android.material.textfield.TextInputLayout>
     -->
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/Username"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border"
+        android:hint="Memelord name"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/Password"
+        app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/Email"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:background="@drawable/border"
+        android:hint="Fake email"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="@+id/Username"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Username"
+        app:layout_constraintTop_toBottomOf="@+id/memester"
+        app:layout_constraintVertical_bias="0.103" />
+
     <EditText
         android:id="@+id/Password"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Stronk password"
-        android:padding="15dp"
         android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@+id/login"
-        app:layout_constraintEnd_toEndOf="@+id/login"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login" />
-
-    <Button
-        android:id="@+id/login"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="340dp"
-        android:layout_height="55dp"
-        android:text="login"
-        android:textColor="@color/white"
-        app:strokeColor="@color/white"
+        android:ems="10"
+        android:hint="Stronk password"
+        android:inputType="textPassword"
+        android:padding="15dp"
         app:layout_constraintBottom_toTopOf="@+id/signup"
-        app:layout_constraintEnd_toEndOf="@+id/signup"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signup" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/quote"
@@ -124,10 +125,11 @@
         android:id="@+id/memester"
         android:layout_width="369dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="76dp"
         app:layout_constraintBottom_toTopOf="@+id/Username"
-        app:layout_constraintEnd_toEndOf="@+id/Username"
-        app:layout_constraintStart_toStartOf="@+id/Username"
+        app:layout_constraintEnd_toEndOf="@+id/Email"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/Email"
         app:srcCompat="@drawable/memester" />
 
     <ImageView
@@ -141,5 +143,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
