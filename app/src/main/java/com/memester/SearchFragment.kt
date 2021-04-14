@@ -1,10 +1,12 @@
 package com.memester
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +39,8 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
+
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -56,4 +60,12 @@ class SearchFragment : Fragment() {
                 }
             }
     }
+
+    /*
+    val btn = findViewById<Button>(R.id.button)
+    btn.setOnClickListener {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+    */
 }
