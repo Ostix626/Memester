@@ -24,7 +24,6 @@
 
 
     <!--
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Username"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
@@ -37,7 +36,6 @@
         app:layout_constraintStart_toStartOf="@+id/Password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
             android:layout_width="340dp"
@@ -123,7 +121,9 @@
 
     <ImageView
         android:id="@+id/memester"
-        android:layout_width="369dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:layout_height="80dp"
         android:layout_marginBottom="76dp"
         app:layout_constraintBottom_toTopOf="@+id/Username"

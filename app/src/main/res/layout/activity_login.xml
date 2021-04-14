@@ -22,12 +22,12 @@
         app:strokeColor="@color/white" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Username"
+        android:id="@+id/Email"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
         android:layout_marginBottom="4dp"
-        android:hint="Memelord name"
+        android:hint="Fake email"
         android:padding="15dp"
         android:background="@drawable/border"
         app:layout_constraintBottom_toTopOf="@+id/Password"
@@ -40,7 +40,6 @@
 
 
     <!--
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Username"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
@@ -53,7 +52,6 @@
         app:layout_constraintStart_toStartOf="@+id/Password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
             android:layout_width="340dp"
@@ -122,12 +120,14 @@
 
     <ImageView
         android:id="@+id/memester"
-        android:layout_width="369dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:layout_height="80dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/Username"
-        app:layout_constraintEnd_toEndOf="@+id/Username"
-        app:layout_constraintStart_toStartOf="@+id/Username"
+        app:layout_constraintBottom_toTopOf="@+id/Email"
+        app:layout_constraintEnd_toEndOf="@+id/Email"
+        app:layout_constraintStart_toStartOf="@+id/Email"
         app:srcCompat="@drawable/memester" />
 
     <ImageView
