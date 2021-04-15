@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp"
     tools:context=".Home">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
-        <!-- TODO: Update blank fragment layout -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        tools:context=".Home">
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+
 
     </FrameLayout>
+</RelativeLayout>

@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/signup"
+        android:id="@+id/signup_btn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="340dp"
         android:layout_height="55dp"
@@ -17,9 +17,9 @@
         android:text="register"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintEnd_toEndOf="@+id/password_signup"
         app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/Password"
+        app:layout_constraintStart_toStartOf="@+id/password_signup"
         app:strokeColor="@color/white" />
 
 
@@ -45,7 +45,7 @@
     -->
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Username"
+        android:id="@+id/username_signup"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
@@ -53,30 +53,30 @@
         android:background="@drawable/border"
         android:hint="Memelord name"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/Password"
-        app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintBottom_toTopOf="@+id/password_signup"
+        app:layout_constraintEnd_toEndOf="@+id/password_signup"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Password"
+        app:layout_constraintStart_toStartOf="@+id/password_signup"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Email"
+        android:id="@+id/email_signup"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
         android:background="@drawable/border"
         android:hint="Fake email"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/signup"
-        app:layout_constraintEnd_toEndOf="@+id/Username"
+        app:layout_constraintBottom_toTopOf="@+id/signup_btn"
+        app:layout_constraintEnd_toEndOf="@+id/username_signup"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Username"
+        app:layout_constraintStart_toStartOf="@+id/username_signup"
         app:layout_constraintTop_toBottomOf="@+id/memester"
         app:layout_constraintVertical_bias="0.103" />
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/password_signup"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
@@ -85,7 +85,7 @@
         android:hint="Stronk password"
         android:inputType="textPassword"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintBottom_toTopOf="@+id/signup_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
@@ -99,9 +99,9 @@
         android:textAlignment="center"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/signup"
-        app:layout_constraintStart_toStartOf="@+id/signup"
-        app:layout_constraintTop_toBottomOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="@+id/signup_btn"
+        app:layout_constraintStart_toStartOf="@+id/signup_btn"
+        app:layout_constraintTop_toBottomOf="@+id/signup_btn"
         app:layout_constraintVertical_bias="0.409" />
 
     <TextView
@@ -126,10 +126,10 @@
         android:paddingRight="15dp"
         android:layout_height="80dp"
         android:layout_marginBottom="76dp"
-        app:layout_constraintBottom_toTopOf="@+id/Username"
-        app:layout_constraintEnd_toEndOf="@+id/Email"
+        app:layout_constraintBottom_toTopOf="@+id/username_signup"
+        app:layout_constraintEnd_toEndOf="@+id/email_signup"
         app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="@+id/Email"
+        app:layout_constraintStart_toStartOf="@+id/email_signup"
         app:srcCompat="@drawable/memester" />
 
     <ImageView

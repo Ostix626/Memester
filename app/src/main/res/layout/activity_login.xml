@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <Button
-        android:id="@+id/signup"
+        android:id="@+id/signup_link_btn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="340dp"
         android:layout_height="55dp"
@@ -22,7 +22,7 @@
         app:strokeColor="@color/white" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Email"
+        android:id="@+id/email_login"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
@@ -30,10 +30,10 @@
         android:hint="Fake email"
         android:padding="15dp"
         android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@+id/Password"
-        app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintBottom_toTopOf="@+id/password_login"
+        app:layout_constraintEnd_toEndOf="@+id/password_login"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Password"
+        app:layout_constraintStart_toStartOf="@+id/password_login"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingClass" />
@@ -60,7 +60,7 @@
     </com.google.android.material.textfield.TextInputLayout>
     -->
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/password_login"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="340dp"
         android:layout_height="55dp"
@@ -71,23 +71,23 @@
         android:hint="Stronk password"
         android:padding="15dp"
         android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@+id/login"
-        app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintEnd_toEndOf="@+id/login_btn"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login" />
+        app:layout_constraintStart_toStartOf="@+id/login_btn" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/login_btn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="340dp"
         android:layout_height="55dp"
         android:text="login"
         android:textColor="@color/white"
         app:strokeColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/signup"
-        app:layout_constraintEnd_toEndOf="@+id/signup"
+        app:layout_constraintBottom_toTopOf="@+id/signup_link_btn"
+        app:layout_constraintEnd_toEndOf="@+id/signup_link_btn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signup" />
+        app:layout_constraintStart_toStartOf="@+id/signup_link_btn" />
 
     <TextView
         android:id="@+id/quote"
@@ -98,9 +98,9 @@
         android:textAlignment="center"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/signup"
-        app:layout_constraintStart_toStartOf="@+id/signup"
-        app:layout_constraintTop_toBottomOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="@+id/signup_link_btn"
+        app:layout_constraintStart_toStartOf="@+id/signup_link_btn"
+        app:layout_constraintTop_toBottomOf="@+id/signup_link_btn"
         app:layout_constraintVertical_bias="0.409" />
 
     <TextView
@@ -125,9 +125,9 @@
         android:paddingRight="15dp"
         android:layout_height="80dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/Email"
-        app:layout_constraintEnd_toEndOf="@+id/Email"
-        app:layout_constraintStart_toStartOf="@+id/Email"
+        app:layout_constraintBottom_toTopOf="@+id/email_login"
+        app:layout_constraintEnd_toEndOf="@+id/email_login"
+        app:layout_constraintStart_toStartOf="@+id/email_login"
         app:srcCompat="@drawable/memester" />
 
     <ImageView

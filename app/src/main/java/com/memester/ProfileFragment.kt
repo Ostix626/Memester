@@ -58,7 +58,7 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
-
+    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val btn = view.findViewById<Button>(R.id.button)
@@ -67,4 +67,5 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
     }
+    */
 }

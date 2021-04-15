@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "642165798480",
+    "project_id": "memester-ce3c4",
+    "storage_bucket": "memester-ce3c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642165798480:android:a61e2091f0fe1dbb4e0355",
+        "android_client_info": {
+          "package_name": "com.memester"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642165798480-3l2bf14jljmi2u74c1ruvf0nlsrgpq79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.memester",
+            "certificate_hash": "abefb001eec7aff5add7f6c865ae2d553abad99e"
+          }
+        },
+        {
+          "client_id": "642165798480-ebil6fguh7ru0ho4n6hi82o66hc7q2jb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA03JF-FDZdDHdk9lYcmKnwzF9pHEwuz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642165798480-ebil6fguh7ru0ho4n6hi82o66hc7q2jb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

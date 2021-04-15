@@ -5,10 +5,28 @@
     android:layout_height="match_parent"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="search" />
+        android:layout_height="match_parent">
+
+
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Search memelords..."
+            android:padding="15dp"
+            android:background="@color/darkGrey"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_bar"
+            />
+
+    </RelativeLayout>
 
 </FrameLayout>
