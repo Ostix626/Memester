@@ -14,6 +14,19 @@
         android:src="@drawable/ic_close"/>
 
     <Button
+        android:id="@+id/saved_memes_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Saved memes"
+        android:textColor="@color/white"
+        app:strokeColor="@color/white" />
+
+    <Button
         android:id="@+id/change_profile_pic_btn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
