@@ -38,10 +38,25 @@
             android:layout_gravity="start"
             android:layout_marginStart="20dp">
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <!--
+                  <com.google.android.material.imageview.ShapeableImageView
+                      android:id="@+id/profilePic"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:radius="1000dp"
+                      android:src="@drawable/obi"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:shapeAppearanceOverlay="@style/Circular"
+                      app:strokeColor="@color/skyblue"
+                      app:strokeWidth="1dp" />
+  -->
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePic"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:radius="1000dp"
                 android:src="@drawable/obi"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -49,9 +64,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/Circular"
-                app:strokeColor="@color/skyblue"
-                app:strokeWidth="1dp" />
-
+                app:civ_border_color="@color/skyblue"
+                app:civ_border_width="1dp"/>
 
         </RelativeLayout>
 

@@ -9,12 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
 
 
         <EditText
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_below="@+id/toolbar"
             android:hint="Search memelords..."
             android:padding="15dp"
             android:background="@color/darkGrey"
