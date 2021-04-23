@@ -9,12 +9,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import com.memester.Model.User
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment() {
-
     private lateinit var db: DatabaseReference
 
     override fun onCreateView(
@@ -23,10 +25,10 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        val userRef = FirebaseDatabase.getInstance().getReference().child("Users")
         db = FirebaseDatabase.getInstance().reference
+        val usersRef = FirebaseDatabase.getInstance().getReference().child("Users")
+        val currentUser = FirebaseAuth.getInstance().currentUser!!
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
         val usernameTextView = view.findViewById<TextView>(R.id.username_profile_fragment)
         val followingTextView = view.findViewById<TextView>(R.id.following_profile_fragment)
         val followersTextView = view.findViewById<TextView>(R.id.followers_profile_fragment)
@@ -34,16 +36,48 @@ class ProfileFragment : Fragment() {
 
 
 
-        userRef.child(currentUser?.uid.toString()).child("username").get().addOnSuccessListener {
-            usernameTextView.text = it.value as CharSequence?
-        }
-        db.child("Follow").child(currentUser?.uid.toString()).child("Following").get().addOnSuccessListener {
-            followingTextView.text = it.getChildrenCount().toString()
-        }
-        db.child("Follow").child(currentUser?.uid.toString()).child("Followers").get().addOnSuccessListener {
-            followersTextView.text = it.childrenCount.toString()
-        }
-        // TODO: posts count and show profile image
+//        usersRef.child(currentUser?.uid.toString()).child("username").get().addOnSuccessListener {
+//            usernameTextView.text = it.value as CharSequence?
+//        }
+//        db.child("Follow").child(currentUser?.uid.toString()).child("Following").get().addOnSuccessListener {
+//            followingTextView.text = it.getChildrenCount().toString()
+//        }
+//        db.child("Follow").child(currentUser?.uid.toString()).child("Followers").get().addOnSuccessListener {
+//            followersTextView.text = it.childrenCount.toString()
+//        }
+
+        usersRef.child(currentUser?.uid.toString()).addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {}
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (context == null) {return}
+                if (snapshot.exists())
+                {
+                    val user = snapshot.getValue<User>(User::class.java)
+                    Picasso.get().load(user!!.getImage()).placeholder(R.drawable.profile).into(profileImage)
+                    usernameTextView.text  = user!!.getUsername()
+                }
+            }
+        })
+
+
+        // TODO: posts count
+
+        db.child("Follow").child(currentUser.uid.toString()).child("Following").addValueEventListener(object : ValueEventListener
+        {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) followingTextView.text = snapshot.childrenCount.toString()
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+        db.child("Follow").child(currentUser.uid.toString()).child("Followers").addValueEventListener(object : ValueEventListener
+        {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) followersTextView.text = snapshot.childrenCount.toString()
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
 
         return view
     }

@@ -110,7 +110,7 @@ class UserAdapter (private var mContext: Context, private var mUser: List<User>,
             override fun onDataChange(datasnapshot: DataSnapshot)
             {
                 if(datasnapshot.child(uid).key.toString() == FirebaseAuth.getInstance().currentUser.uid){
-                    followButtton.visibility = View.INVISIBLE
+                    followButtton.visibility = View.GONE
 //                    Toast.makeText(this@UserAdapter.mContext , "prvo $prvi", Toast.LENGTH_LONG).show()
 //                    Toast.makeText(this@UserAdapter.mContext , "prvo $drugi", Toast.LENGTH_LONG).show()
                 }
