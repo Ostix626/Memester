@@ -51,7 +51,7 @@ class RegistrationActivity : AppCompatActivity() {
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful)
                         {
-                            saveUserInfo(username, email, progressDialog)
+                            saveUserInfo(username, email, progressDialog, username.toLowerCase())
                         }
                         else
                         {
@@ -65,7 +65,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserInfo(username: String, email: String, progressDialog: ProgressDialog)
+    private fun saveUserInfo(username: String, email: String, progressDialog: ProgressDialog, usernameLower: String)
     {
         val currentUserID = FirebaseAuth.getInstance().currentUser!!.uid
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("Users")
@@ -73,6 +73,7 @@ class RegistrationActivity : AppCompatActivity() {
         val userMap = HashMap<String, Any>()
         userMap["uid"] = currentUserID
         userMap["username"] = username
+        userMap["usernameLower"] = usernameLower
         userMap["email"] = email
         userMap["image"] = "https://firebasestorage.googleapis.com/v0/b/memester-ce3c4.appspot.com/o/Default%20images%2Fprofile.png?alt=media&token=7914addd-d04e-44cb-b006-5b91e4bfe5ed"
 

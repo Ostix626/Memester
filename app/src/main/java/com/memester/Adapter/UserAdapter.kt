@@ -1,12 +1,16 @@
 package com.memester.Adapter
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
+import android.util.Log.INFO
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +22,8 @@ import com.google.firebase.database.ValueEventListener
 import com.memester.Model.User
 import com.memester.R
 import com.squareup.picasso.Picasso
+import okhttp3.internal.platform.Platform.INFO
+import java.util.logging.Level.INFO
 
 class UserAdapter (private var mContext: Context, private var mUser: List<User>, private var isFragment: Boolean = false) : RecyclerView.Adapter<UserAdapter.ViewHolder>()
 {
@@ -103,8 +109,17 @@ class UserAdapter (private var mContext: Context, private var mUser: List<User>,
         {
             override fun onDataChange(datasnapshot: DataSnapshot)
             {
-                if(datasnapshot.child(uid).exists())
+                if(datasnapshot.child(uid).key.toString() == FirebaseAuth.getInstance().currentUser.uid){
+                    followButtton.visibility = View.INVISIBLE
+//                    Toast.makeText(this@UserAdapter.mContext , "prvo $prvi", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@UserAdapter.mContext , "prvo $drugi", Toast.LENGTH_LONG).show()
+                }
+                else if(datasnapshot.child(uid).exists())
                 {
+//                    var prvi: String = datasnapshot.child(uid).key.toString()
+//                    var drugi: String = FirebaseAuth.getInstance().currentUser.uid
+//                    Log.d("ALA", "prvi: $prvi")
+//                    Log.d("ALA", "drugi: $drugi")
                     followButtton.text = "Following"
                     followButtton.setTextColor(Color.WHITE)
                 }
