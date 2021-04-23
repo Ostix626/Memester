@@ -1,15 +1,14 @@
 package com.memester
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -19,33 +18,13 @@ import com.google.firebase.database.ValueEventListener
 import com.memester.Adapter.UserAdapter
 import com.memester.Model.User
 import kotlinx.android.synthetic.main.fragment_search.view.*
+import java.security.AccessController.getContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
     private var recyclerView: RecyclerView? = null
     private var userAdapter: UserAdapter? = null
     private var mUser: MutableList<User>? = null
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
 
 
@@ -64,7 +43,10 @@ class SearchFragment : Fragment() {
         userAdapter = context?.let { UserAdapter(it, mUser as ArrayList<User>, true) }
         recyclerView?.adapter = userAdapter
 
-
+        //show all users on load fragment
+        retriveUsers()
+        searchUser("")
+        recyclerView?.visibility = View.VISIBLE
 
         view.search_bar.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -77,7 +59,8 @@ class SearchFragment : Fragment() {
             {
                 if (view.search_bar.text.toString() == "")
                 {
-                    //TODO show all users
+                    retriveUsers()
+                    searchUser("")
                 }
                 else
                 {
@@ -96,12 +79,12 @@ class SearchFragment : Fragment() {
         return view
     }
 
-    private fun searchUser(input: String)
+     fun searchUser(input: String)
     {
-        val querry = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").startAt(input).endAt(input + "\uf8ff")
+        val query = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").startAt(input).endAt(input + "\uf8ff")
 
 
-        querry.addValueEventListener (object : ValueEventListener
+        query.addValueEventListener (object : ValueEventListener
         {
             override fun onDataChange(dataSnapshot: DataSnapshot)
             {
@@ -125,7 +108,7 @@ class SearchFragment : Fragment() {
         })
     }
 
-    private fun retriveUsers() {
+     fun retriveUsers() {
         val usersRef = FirebaseDatabase.getInstance().getReference().child("Users")
         usersRef.addValueEventListener (object : ValueEventListener
         {
@@ -155,26 +138,6 @@ class SearchFragment : Fragment() {
         })
     }
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 
     /*
     val btn = findViewById<Button>(R.id.button)

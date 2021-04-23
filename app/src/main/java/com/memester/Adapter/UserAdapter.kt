@@ -49,7 +49,7 @@ class UserAdapter (private var mContext: Context, private var mUser: List<User>,
                             if (task.isSuccessful)
                             {
                                 firebaseUser?.uid.let { it ->
-                                    FirebaseDatabase.getInstance().reference.child("Follow").child(user.getUid()).child("Following").child(it.toString())
+                                    FirebaseDatabase.getInstance().reference.child("Follow").child(user.getUid()).child("Followers").child(it.toString())
                                         .setValue(true).addOnCompleteListener { task ->
                                             if (task.isSuccessful)
                                             {
@@ -69,7 +69,7 @@ class UserAdapter (private var mContext: Context, private var mUser: List<User>,
                             if (task.isSuccessful)
                             {
                                 firebaseUser?.uid.let { it ->
-                                    FirebaseDatabase.getInstance().reference.child("Follow").child(user.getUid()).child("Following").child(it.toString())
+                                    FirebaseDatabase.getInstance().reference.child("Follow").child(user.getUid()).child("Followers").child(it.toString())
                                         .removeValue().addOnCompleteListener { task ->
                                             if (task.isSuccessful)
                                             {

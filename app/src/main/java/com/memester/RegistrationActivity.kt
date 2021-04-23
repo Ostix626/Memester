@@ -30,6 +30,7 @@ class RegistrationActivity : AppCompatActivity() {
         val email = email_signup.text.toString()
         val username = username_signup.text.toString()
         val password = password_signup.text.toString()
+        //val usernameLower = username_signup.text.toString().toLowerCase()
 
         when {
             TextUtils.isEmpty(email) -> Toast.makeText(this, "Just make up some email", Toast.LENGTH_SHORT).show()
