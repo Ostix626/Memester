@@ -2,12 +2,16 @@ package com.memester
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NavActivity : AppCompatActivity() {
+
+
+
 
     /*   fragment selector
     internal var selectedFragment: Fragment? = null
@@ -44,6 +48,18 @@ class NavActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav)
 
+        val addMemeBtn: androidx.appcompat.widget.AppCompatImageButton = findViewById(R.id.addMeme)
+        val notificationsBtn: androidx.appcompat.widget.AppCompatImageButton =findViewById(R.id.notifications)
+
+        addMemeBtn.setOnClickListener {
+            Toast.makeText(this, "TODO: add new meme", Toast.LENGTH_SHORT).show()
+        }
+        notificationsBtn.setOnClickListener {
+            Toast.makeText(this, "TODO: add notifications", Toast.LENGTH_SHORT).show()
+        }
+
+
+        //bottom menu on profile
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragment)
 
