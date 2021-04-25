@@ -55,14 +55,13 @@ class AccountSettingsActivity : AppCompatActivity()
         }
 
         save_infor_profile_btn.setOnClickListener {
-            if (checker == "clicked")
-            {
-                uploadImageAndUpdateInfo()
-            }
-            else
-            {
-                updateUserInfoOnly()
-            }
+            if (checker == "clicked") { uploadImageAndUpdateInfo() }
+            else { updateUserInfoOnly() }
+        }
+
+        upload_profile_changes_btn.setOnClickListener {
+            if (checker == "clicked") { uploadImageAndUpdateInfo() }
+            else { updateUserInfoOnly() }
         }
 
 
@@ -94,7 +93,8 @@ class AccountSettingsActivity : AppCompatActivity()
                 val usersRef = FirebaseDatabase.getInstance().reference.child("Users")
 
                 val userMap = HashMap<String, Any>()
-                userMap["username"] = username_profile_frag.text.toString().toLowerCase()
+                userMap["username"] = username_profile_frag.text.toString()
+                userMap["usernameLower"] = username_profile_frag.text.toString().toLowerCase()
 
                 usersRef.child(firebaseUser.uid).updateChildren(userMap)
 
@@ -137,12 +137,15 @@ class AccountSettingsActivity : AppCompatActivity()
     {
         when
         {
-            imageUri == null -> Toast.makeText(this, "Please select image first.", Toast.LENGTH_LONG).show()
+            imageUri == null -> {
+                Toast.makeText(this, "You didn't select profile image to upload", Toast.LENGTH_SHORT).show()
+                updateUserInfoOnly()
+            }
             //TextUtils.isEmpty(full_name_profile_frag.text.toString()) -> Toast.makeText(this, "Please write full name first.", Toast.LENGTH_LONG).show()
             username_profile_frag.text.toString() == "" -> Toast.makeText(this, "Please write user name first.", Toast.LENGTH_LONG).show()
 
             else -> {
-                val progressDialog = ProgressDialog(this)
+                val progressDialog = ProgressDialog(this,  R.style.MyAlertDialogStyle)
                 progressDialog.setTitle("Account Settings")
                 progressDialog.setMessage("Please wait, we are updating your profile...")
                 progressDialog.show()

@@ -14,11 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Memester">
         <activity android:name=".AccountSettingsActivity"></activity>
-        <activity android:name=".Activity1" />
         <activity android:name=".NavActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".AccountSettings1Activity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
