@@ -57,7 +57,7 @@ class AddPostActivity : AppCompatActivity() {
         }
         else
         {
-            Toast.makeText(this, "Only memes allowed!!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Pick the dankest meme to upload", Toast.LENGTH_SHORT).show()
         }
     }
 
