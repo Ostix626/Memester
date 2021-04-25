@@ -1,6 +1,7 @@
 package com.memester.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.memester.CommentsActivity
 import com.memester.Model.Post
 import com.memester.Model.User
 import com.memester.R
@@ -41,16 +43,17 @@ class PostAdapter
 
         Picasso.get().load(post.getPostimage()).into(holder.postImage)
 
-        if (post.getDescription().equals("")) { holder.description.visibility == View.GONE }
+        if (post.getDescription().equals("")) { holder.description.visibility = View.GONE }
         else
         {
-            holder.description.visibility == View.VISIBLE
+            holder.description.visibility = View.VISIBLE
             holder.description.setText(post.getDescription())
         }
 
         publisherInfo(holder.profileImage, holder.userName, holder.publisher, post.getPublisher())
         isLiked(post.getPostid(), holder.likeButton)
         numberOfLikes(holder.likes, post.getPostid())
+        numberOfComments(holder.comments, post.getPostid())
 
         holder.likeButton.setOnClickListener {
             if (holder.likeButton.tag == "Like")
@@ -60,9 +63,13 @@ class PostAdapter
             else
             {
                 FirebaseDatabase.getInstance().reference.child("Likes").child(post.getPostid()).child(firebaseUser!!.uid).removeValue()
-//                val intent = Intent(mContext, NavActivity::class.java)
-//                mContext.startActivity(intent)
             }
+        }
+        holder.commentButton.setOnClickListener {
+            val intentComment = Intent(mContext, CommentsActivity::class.java)
+            intentComment.putExtra("postId", post.getPostid())
+            intentComment.putExtra("publisherId", post.getPublisher())
+            mContext.startActivity(intentComment)
         }
     }
 
@@ -78,6 +85,20 @@ class PostAdapter
             override fun onCancelled(error: DatabaseError) {}
         })
     }
+
+    private fun numberOfComments(comments: TextView, postid: String)
+    {
+        val comentsRef = FirebaseDatabase.getInstance().reference.child("Comments").child(postid)
+
+        comentsRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()) { comments.text = snapshot.childrenCount.toString() }
+                else {comments.text = "0"}
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
 
     private fun isLiked(postid: String, likeButton: ImageView, )
     {

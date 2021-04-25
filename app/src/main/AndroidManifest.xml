@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Memester">
-        <activity android:name=".AddPostActivity"></activity>
+        <activity android:name=".CommentsActivity"></activity>
+        <activity android:name=".AddPostActivity" />
         <activity android:name=".AccountSettingsActivity" />
         <activity android:name=".NavActivity" />
         <activity android:name=".ProfileActivity" />

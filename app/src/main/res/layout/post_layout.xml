@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/item_border"
+        android:paddingTop="8dp"
         android:orientation="vertical">
 
 
@@ -22,8 +23,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/user_profile_image_post"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/profile"
                 android:padding="5dp"
                 app:civ_border_color="@color/skyblue"
@@ -34,15 +35,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="16sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="14dp"
-
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/skyblue"
                 />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            />
 
 
         <ImageView
@@ -59,8 +68,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp">
+            android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/post_image_like_btn"
@@ -69,14 +77,43 @@
                 android:src="@drawable/heart_not_clicked"
                 />
 
+            <TextView
+                android:id="@+id/likes"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/post_image_like_btn"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="20dp"
+                android:text=""
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                />
+
             <ImageView
                 android:id="@+id/post_image_comment_btn"
                 android:layout_width="40dp"
                 android:layout_height="34dp"
                 android:src="@drawable/comment"
-                android:layout_toEndOf="@+id/post_image_like_btn"
+                android:layout_toEndOf="@+id/likes"
                 android:layout_marginTop="3dp"
                 android:layout_marginStart="6dp"
+                />
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/post_image_comment_btn"
+                android:layout_marginLeft="8dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text=""
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
                 />
 
             <ImageView
@@ -93,15 +130,15 @@
 
 
 
-        <TextView
-            android:id="@+id/likes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/likes"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
 
         <TextView
             android:id="@+id/publisher"
@@ -111,28 +148,29 @@
             android:textStyle="bold"
             android:textSize="15dp"
             android:textColor="@color/white"
+            android:visibility="gone"
             />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/description"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
 
-        <TextView
-            android:id="@+id/comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:textSize="16dp"
-            android:layout_marginBottom="5dp"
-            android:text=""
-            android:textColor="@color/white"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/comments"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:textSize="16dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:text=""-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
 
 
 
