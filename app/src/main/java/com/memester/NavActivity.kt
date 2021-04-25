@@ -1,5 +1,6 @@
 package com.memester
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -52,7 +53,7 @@ class NavActivity : AppCompatActivity() {
         val notificationsBtn: androidx.appcompat.widget.AppCompatImageButton =findViewById(R.id.notifications)
 
         addMemeBtn.setOnClickListener {
-            Toast.makeText(this, "TODO: add new meme", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@NavActivity, AddPostActivity::class.java))
         }
         notificationsBtn.setOnClickListener {
             Toast.makeText(this, "TODO: add notifications", Toast.LENGTH_SHORT).show()

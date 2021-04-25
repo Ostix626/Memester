@@ -24,41 +24,42 @@
         android:layout_height="wrap_content"
         android:background="@color/darkGrey"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/activity_margin"
-        android:paddingBottom="@dimen/activity_margin"
+        android:paddingTop="@dimen/dimen_8dp"
+        android:paddingBottom="@dimen/dimen_8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        >
 
 
         <RelativeLayout
             android:layout_width="@dimen/profile_image"
             android:layout_height="@dimen/profile_image"
             android:layout_gravity="start"
-            android:layout_marginStart="20dp">
-
+            android:layout_marginStart="@dimen/activity_margin"
+            android:padding="1dp">
             <!--
-                  <com.google.android.material.imageview.ShapeableImageView
-                      android:id="@+id/profilePic"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:radius="1000dp"
-                      android:src="@drawable/obi"
-                      app:layout_constraintBottom_toBottomOf="parent"
-                      app:layout_constraintEnd_toEndOf="parent"
-                      app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toTopOf="parent"
-                      app:shapeAppearanceOverlay="@style/Circular"
-                      app:strokeColor="@color/skyblue"
-                      app:strokeWidth="1dp" />
-  -->
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/profilePic"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:radius="1000dp"
+                                android:src="@drawable/obi"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearanceOverlay="@style/Circular"
+                                app:strokeColor="@color/skyblue"
+                                app:strokeWidth="1dp" />
+            -->
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:radius="1000dp"
-                android:src="@drawable/obi"
+                android:src="@drawable/profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,26 +71,27 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="266dp"
-                android:layout_height="30dp"
+                android:id="@+id/username_profile_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:layout_marginBottom="10dp"
                 android:letterSpacing="0.1"
-                android:text="Genetal Kenobi"
+                android:text=""
+                android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/profile_name"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="276dp"
+                android:id="@+id/stats"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
@@ -108,10 +110,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/posts_profile_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="66"
+                        android:text="0"
                         android:textColor="@color/skyblue"
                         android:textSize="24dp"
                         android:textStyle="normal" />
@@ -132,10 +135,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/followers_profile_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="99"
+                        android:text="0"
                         android:textColor="@color/skyblue"
                         android:textSize="24dp" />
 
@@ -155,10 +159,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/following_profile_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="666"
+                        android:text="0"
                         android:textColor="@color/skyblue"
                         android:textSize="@dimen/profile_meta" />
 
@@ -174,6 +179,34 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/follow_btn_profile"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/btn_padding"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Follow"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:strokeColor="@color/white" />
+
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/follow_btn_profile" />
+
     <!--
        <com.google.android.material.bottomnavigation.BottomNavigationView
            android:id="@+id/bottomNavigationView"

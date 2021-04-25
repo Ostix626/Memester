@@ -64,6 +64,10 @@ class AccountSettingsActivity : AppCompatActivity()
             else { updateUserInfoOnly() }
         }
 
+        delete_account_btn.setOnClickListener {
+            Toast.makeText(this, "LOL, we cant let you do that", Toast.LENGTH_SHORT).show()
+        }
+
 
         userInfo()
     }
