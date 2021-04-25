@@ -30,7 +30,7 @@ class Post {
     }
 
 
-    fun setPostid():String {
+    fun getPostid():String {
         return postid
     }
     fun getPostimage():String {
