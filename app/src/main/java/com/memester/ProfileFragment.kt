@@ -5,15 +5,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.memester.Adapter.MyMemesAdapter
+import com.memester.Model.Post
 import com.memester.Model.User
 import com.squareup.picasso.Picasso
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ProfileFragment : Fragment() {
     private lateinit var db: DatabaseReference
+    var postList: List<Post>? = null
+    var myMemesAdapter : MyMemesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,11 +85,51 @@ class ProfileFragment : Fragment() {
         })
 
 
+        var recyclerViewUploadedImages : RecyclerView
+        recyclerViewUploadedImages = view.findViewById(R.id.recycler_view_uploaded_pics)
+        recyclerViewUploadedImages.setHasFixedSize(true)
+        val linearLayoutManager: LinearLayoutManager = GridLayoutManager(context, 3)
+        recyclerViewUploadedImages.layoutManager = linearLayoutManager
+
+        postList = ArrayList()
+        myMemesAdapter = context?.let { MyMemesAdapter(it, postList as ArrayList<Post>) }
+        recyclerViewUploadedImages.adapter = myMemesAdapter
+
+        myMemes()
+
         return view
     }
 
 
 
+    private fun myMemes()
+    {
+        val postsRef = FirebaseDatabase.getInstance().reference.child("Posts")
+
+        postsRef.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists())
+                {
+                    (postList as ArrayList<Post>).clear()
+                    for (meme in snapshot.children)
+                    {
+                        val post = meme.getValue(Post::class.java)!!
+                        if (post.getPublisher().equals(FirebaseAuth.getInstance().currentUser!!.uid))
+                        {
+                            (postList as ArrayList<Post>).add(post)
+                        }
+                        Collections.reverse(postList)
+                        myMemesAdapter!!.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

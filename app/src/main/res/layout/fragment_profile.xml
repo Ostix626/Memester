@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp"
     tools:context=".ProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -185,13 +184,27 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:id="@+id/scroll_view"
+<!--        <ScrollView-->
+<!--            android:id="@+id/scroll_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/linearLayout" >-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_uploaded_pics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:listitem="@layout/user_item_layout"
+            tools:src="@tools:sample/avatars"/>
+
+
+        <!--        </ScrollView>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

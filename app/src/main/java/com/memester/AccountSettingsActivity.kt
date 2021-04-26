@@ -72,7 +72,7 @@ class AccountSettingsActivity : AppCompatActivity()
         }
 
         delete_account_btn.setOnClickListener {
-            Toast.makeText(this, "LOL, we cant let you do that", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "LOL, we can't let you do that", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -99,7 +99,7 @@ class AccountSettingsActivity : AppCompatActivity()
     {
         when {
             //TextUtils.isEmpty(full_name_profile_frag.text.toString()) -> Toast.makeText(this, "Please write full name first.", Toast.LENGTH_LONG).show()
-            username_profile_frag.text.toString() == "" -> Toast.makeText(this, "Please write user name first.", Toast.LENGTH_LONG).show()
+            username_profile_frag.text.toString() == "" -> Toast.makeText(this, "Write your memelord name!", Toast.LENGTH_LONG).show()
             else -> {
                 val usersRef = FirebaseDatabase.getInstance().reference.child("Users")
 
@@ -153,12 +153,12 @@ class AccountSettingsActivity : AppCompatActivity()
                 updateUserInfoOnly()
             }
             //TextUtils.isEmpty(full_name_profile_frag.text.toString()) -> Toast.makeText(this, "Please write full name first.", Toast.LENGTH_LONG).show()
-            username_profile_frag.text.toString() == "" -> Toast.makeText(this, "Please write user name first.", Toast.LENGTH_LONG).show()
+            username_profile_frag.text.toString() == "" -> Toast.makeText(this, "Write your memelord name!", Toast.LENGTH_LONG).show()
 
             else -> {
                 val progressDialog = ProgressDialog(this,  R.style.MyAlertDialogStyle)
-                progressDialog.setTitle("Account Settings")
-                progressDialog.setMessage("Please wait, we are updating your profile...")
+                progressDialog.setTitle("Please wait")
+                progressDialog.setMessage("Getting your credit card info...")
                 progressDialog.show()
 
                 val fileRef = storageProfilePicRef!!.child(firebaseUser!!.uid + ".jpg")
