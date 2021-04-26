@@ -38,6 +38,7 @@ class ProfileFragment : Fragment() {
         val usernameTextView = view.findViewById<TextView>(R.id.username_profile_fragment)
         val followingTextView = view.findViewById<TextView>(R.id.following_profile_fragment)
         val followersTextView = view.findViewById<TextView>(R.id.followers_profile_fragment)
+        val postsTextView = view.findViewById<TextView>(R.id.posts_profile_fragment)
         val profileImage = view.findViewById<de.hdodenhof.circleimageview.CircleImageView>(R.id.profilePic)
 
 
@@ -68,6 +69,27 @@ class ProfileFragment : Fragment() {
 
 
         // TODO: posts count
+
+        db.child("Posts").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists())
+                {
+                    var count = 0
+                    for (meme in snapshot.children)
+                    {
+                        val post = meme.getValue(Post::class.java)!!
+                        if (post.getPublisher().equals(FirebaseAuth.getInstance().currentUser!!.uid))
+                        {
+                            count += 1
+                        }
+                    }
+                    postsTextView.text = count.toString()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+
 
         db.child("Follow").child(currentUser.uid.toString()).child("Following").addValueEventListener(object : ValueEventListener
         {

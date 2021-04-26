@@ -184,7 +184,9 @@
 
         </LinearLayout>
 
-<!--        <ScrollView-->
+
+
+        <!--        <ScrollView-->
 <!--            android:id="@+id/scroll_view"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
@@ -197,12 +199,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:listitem="@layout/user_item_layout"
-            tools:src="@tools:sample/avatars"/>
-
+            app:flow_horizontalAlign="center"
+            />
+<!--        tools:listitem="@layout/my_posts_item_layout"-->
+<!--        tools:src="@tools:sample/avatars"-->
 
         <!--        </ScrollView>-->
 
