@@ -65,6 +65,12 @@ class Home : Fragment() {
 
                     retrivePosts()
                 }
+                else
+                {
+                    (followingList as ArrayList<String>).add(FirebaseAuth.getInstance().currentUser!!.uid)
+
+                    retrivePosts()
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

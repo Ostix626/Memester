@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/post_image"
-        android:layout_width="145dp"
-        android:layout_height="140dp"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
         android:src="@drawable/profile"
         android:scaleType="centerCrop"
         />

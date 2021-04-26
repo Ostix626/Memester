@@ -40,7 +40,7 @@ class RegistrationActivity : AppCompatActivity() {
             else -> {
                 val progressDialog = ProgressDialog(this@RegistrationActivity, R.style.MyAlertDialogStyle)
                 progressDialog.setTitle("Please wait")
-                progressDialog.setMessage("Selling your informations...")
+                progressDialog.setMessage("Selling your personal information...")
 
                 progressDialog.setCanceledOnTouchOutside(false)
                 progressDialog.show()
