@@ -61,7 +61,8 @@ class Home : Fragment() {
                     {
                         id.key?.let { (followingList as ArrayList<String>).add(it)}
                     }
-                    //TODO:add current user id to followingList da covik more vidit svoje meemse u news feedu
+                    (followingList as ArrayList<String>).add(FirebaseAuth.getInstance().currentUser!!.uid)
+
                     retrivePosts()
                 }
             }

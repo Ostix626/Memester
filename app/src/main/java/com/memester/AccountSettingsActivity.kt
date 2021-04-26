@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.memester.Model.User
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
@@ -55,8 +57,13 @@ class AccountSettingsActivity : AppCompatActivity()
         }
 
         save_infor_profile_btn.setOnClickListener {
-            if (checker == "clicked") { uploadImageAndUpdateInfo() }
-            else { updateUserInfoOnly() }
+            onBackPressed()
+            //zamijeni fragmente:
+//            var fragTrans : FragmentTransaction = supportFragmentManager.beginTransaction()
+//            fragTrans.replace(R.id.accSettings, ProfileFragment()).commit()
+
+//            if (checker == "clicked") { uploadImageAndUpdateInfo() }
+//            else { updateUserInfoOnly() }
         }
 
         upload_profile_changes_btn.setOnClickListener {

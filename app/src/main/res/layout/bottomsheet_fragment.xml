@@ -53,7 +53,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:text="Logout"
-        android:textColor="@color/white"
-        app:strokeColor="@color/white" />
+        android:textColor="@color/red"
+        app:strokeColor="@color/red" />
 
 </LinearLayout>
