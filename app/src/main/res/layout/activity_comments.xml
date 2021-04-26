@@ -52,7 +52,7 @@
             android:src="@drawable/profile"/>
 
         <EditText
-            android:id="@+id/comment"
+            android:id="@+id/post_new_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
