@@ -73,15 +73,16 @@
 
             <ImageView
                 android:id="@+id/post_image_like_btn"
-                android:layout_width="41dp"
-                android:layout_height="40dp"
+                android:layout_width="31dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="3dp"
                 android:src="@drawable/heart_not_clicked"
                 />
 
             <TextView
                 android:id="@+id/likes"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/post_image_like_btn"
                 android:layout_marginLeft="8dp"
@@ -95,18 +96,17 @@
 
             <ImageView
                 android:id="@+id/post_image_comment_btn"
-                android:layout_width="40dp"
-                android:layout_height="34dp"
+                android:layout_width="34dp"
+                android:layout_height="30dp"
                 android:src="@drawable/comment"
                 android:layout_toEndOf="@+id/likes"
-                android:layout_marginTop="3dp"
                 android:layout_marginStart="6dp"
                 />
 
             <TextView
                 android:id="@+id/comments"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/post_image_comment_btn"
                 android:layout_marginLeft="8dp"
@@ -119,8 +119,8 @@
 
             <ImageView
                 android:id="@+id/post_save_btn"
-                android:layout_width="40dp"
-                android:layout_height="39dp"
+                android:layout_width="31dp"
+                android:layout_height="30dp"
                 android:src="@drawable/save_unfilled_large_icon"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="0dp"

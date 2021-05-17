@@ -15,74 +15,74 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/comments_image_post"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:adjustViewBounds="true"
-        android:maxHeight="600dp"
-        android:src="@drawable/profile"
-        />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_comments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_below="@id/comments_image_post"
-        android:layout_above="@id/commentRelative"/>
-
-    <RelativeLayout
-        android:id="@+id/commentRelative"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/black">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image_comment"
-            android:layout_height="55dp"
-            android:layout_width="55dp"
-            android:layout_centerVertical="true"
-            app:shapeAppearanceOverlay="@style/Circular"
-            app:civ_border_color="@color/skyblue"
-            app:civ_border_width="1dp"
-            android:src="@drawable/profile"/>
-
-        <EditText
-            android:id="@+id/post_new_comment"
+        <ImageView
+            android:id="@+id/comments_image_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/profile_image_comment"
-            android:layout_toLeftOf="@+id/post_comment"
-            android:padding="15dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
-            android:inputType="text"
-            android:hint="Roast someone..."
-            android:maxLines="5"
-            android:backgroundTint="@color/skyblue"
-
+            android:layout_below="@id/toolbar"
+            android:adjustViewBounds="true"
+            android:maxHeight="600dp"
+            android:src="@drawable/profile"
             />
-
-        <Button
-            android:id="@+id/post_comment"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_comments"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:padding="15dp"
-            android:textStyle="bold"
-            android:textColor="@color/skyblue"
-            android:text="Post"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:backgroundTint="@color/black"
-            app:strokeColor="@color/skyblue"
-            />
-    </RelativeLayout>
+            android:layout_margin="5dp"
+            android:layout_below="@id/comments_image_post"
+            android:layout_above="@id/commentRelative"/>
+
+        <RelativeLayout
+            android:id="@+id/commentRelative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image_comment"
+                android:layout_height="55dp"
+                android:layout_width="55dp"
+                android:layout_centerVertical="true"
+                app:shapeAppearanceOverlay="@style/Circular"
+                app:civ_border_color="@color/skyblue"
+                app:civ_border_width="1dp"
+                android:src="@drawable/profile"/>
+
+            <EditText
+                android:id="@+id/post_new_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/profile_image_comment"
+                android:layout_toLeftOf="@+id/post_comment"
+                android:padding="15dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="text"
+                android:hint="Roast someone..."
+                android:maxLines="5"
+                android:backgroundTint="@color/skyblue"
+
+                />
+
+            <Button
+                android:id="@+id/post_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/skyblue"
+                android:text="Post"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:backgroundTint="@color/black"
+                app:strokeColor="@color/skyblue"
+                />
+        </RelativeLayout>
 
 
 </RelativeLayout>
