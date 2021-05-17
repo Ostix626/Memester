@@ -13,7 +13,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Memester">
-        <activity android:name=".PostDetailsActivity"></activity>
+        <activity android:name=".SavedPostsActivity"></activity>
+        <activity android:name=".PostDetailsActivity" />
         <activity android:name=".CommentsActivity" />
         <activity android:name=".AddPostActivity" />
         <activity android:name=".AccountSettingsActivity" />

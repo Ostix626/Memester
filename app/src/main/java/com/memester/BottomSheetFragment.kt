@@ -44,6 +44,11 @@ class BottomSheetFragment: BottomSheetDialogFragment() {
             startActivity(intent);
         }
 
+        saved_memes_btn.setOnClickListener{
+            val intent = Intent(context, SavedPostsActivity::class.java)
+            startActivity(intent);
+        }
+
         logout_btn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
 
