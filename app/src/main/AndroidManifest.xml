@@ -9,16 +9,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:screenOrientation="portrait"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Memester">
-        <activity android:name=".CommentsActivity"></activity>
+        <activity android:name=".PostDetailsActivity"></activity>
+        <activity android:name=".CommentsActivity" />
         <activity android:name=".AddPostActivity" />
         <activity android:name=".AccountSettingsActivity" />
         <activity
             android:name=".NavActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity">

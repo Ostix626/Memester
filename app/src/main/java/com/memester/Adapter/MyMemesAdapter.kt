@@ -1,14 +1,17 @@
 package com.memester.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.NonNull
+import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.memester.*
 import com.memester.Model.Post
-import com.memester.R
 import com.squareup.picasso.Picasso
 
 class MyMemesAdapter(private val mContext: Context, mPost: List<Post>) : RecyclerView.Adapter<MyMemesAdapter.ViewHolder?>()
@@ -37,6 +40,15 @@ class MyMemesAdapter(private val mContext: Context, mPost: List<Post>) : Recycle
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post:Post = mPost!![position]
         Picasso.get().load(post.getPostimage()).into(holder.postImage)
+
+        holder.postImage.setOnClickListener {
+            val editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            editor.putString("postId", post.getPostid())
+            editor.apply()
+            val intent = Intent(mContext, PostDetailsActivity::class.java)
+            mContext.startActivity(intent);
+//            (mContext as FragmentActivity).getSupportFragmentManager().beginTransaction().replace(R.id.fragment, PostDetailsFragment()).commit()
+        }
     }
 
     override fun getItemCount(): Int {

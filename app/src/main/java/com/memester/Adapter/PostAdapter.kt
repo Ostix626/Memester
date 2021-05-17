@@ -54,6 +54,7 @@ class PostAdapter
         isLiked(post.getPostid(), holder.likeButton)
         numberOfLikes(holder.likes, post.getPostid())
         numberOfComments(holder.comments, post.getPostid())
+        checkSaveStatus(post.getPostid(), holder.saveButton)
 
         holder.likeButton.setOnClickListener {
             if (holder.likeButton.tag == "Like")
@@ -65,11 +66,23 @@ class PostAdapter
                 FirebaseDatabase.getInstance().reference.child("Likes").child(post.getPostid()).child(firebaseUser!!.uid).removeValue()
             }
         }
+
         holder.commentButton.setOnClickListener {
             val intentComment = Intent(mContext, CommentsActivity::class.java)
             intentComment.putExtra("postId", post.getPostid())
             intentComment.putExtra("publisherId", post.getPublisher())
             mContext.startActivity(intentComment)
+        }
+
+        holder.saveButton.setOnClickListener {
+            if (holder.saveButton.tag == "Save")
+            {
+                FirebaseDatabase.getInstance().reference.child("Saves").child(firebaseUser!!.uid).child(post.getPostid()).setValue(true)
+            }
+            else
+            {
+                FirebaseDatabase.getInstance().reference.child("Saves").child(firebaseUser!!.uid).child(post.getPostid()).removeValue()
+            }
         }
     }
 
@@ -180,5 +193,29 @@ class PostAdapter
         })
     }
 
+    private fun checkSaveStatus(postid: String, imageView: ImageView)
+    {
+        val savesRef = FirebaseDatabase.getInstance().reference.child("Saves").child(firebaseUser!!.uid)
+
+        savesRef.addValueEventListener(object : ValueEventListener
+        {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.child(postid).exists()) {
+                    imageView.setImageResource(R.drawable.saved)
+                    imageView.tag = "Saved"
+                }
+                else
+                {
+                    imageView.setImageResource(R.drawable.not_saved)
+                    imageView.tag = "Save"
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
 
 }

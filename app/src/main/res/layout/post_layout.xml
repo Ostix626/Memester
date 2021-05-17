@@ -69,7 +69,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:padding="2dp">
 
             <ImageView
                 android:id="@+id/post_image_like_btn"
@@ -121,7 +122,7 @@
                 android:id="@+id/post_save_btn"
                 android:layout_width="31dp"
                 android:layout_height="30dp"
-                android:src="@drawable/save_unfilled_large_icon"
+                android:src="@drawable/not_saved"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="3dp"
