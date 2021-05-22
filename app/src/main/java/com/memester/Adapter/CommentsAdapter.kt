@@ -98,4 +98,5 @@ class CommentsAdapter(private val mContext: Context, private val mComment : Muta
             commentTV = itemView.findViewById(R.id.comment)
         }
     }
+
 }

@@ -56,7 +56,8 @@ class NavActivity : AppCompatActivity() {
             startActivity(Intent(this@NavActivity, AddPostActivity::class.java))
         }
         notificationsBtn.setOnClickListener {
-            Toast.makeText(this, "TODO: add notifications", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@NavActivity, NotificationsActivity::class.java))
+            //Toast.makeText(this, "TODO: add notifications", Toast.LENGTH_SHORT).show()
         }
 
 

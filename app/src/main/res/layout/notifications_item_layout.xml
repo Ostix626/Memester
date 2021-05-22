@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_border"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/notificaiton_profile_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:radius="1000dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/profile"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:civ_border_color="@color/skyblue"
+        app:civ_border_width="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/notidicaiton_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/notificaiton_profile_image"
+            android:layout_toStartOf="@+id/notificaiotn_post_image"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="15dp"
+            android:paddingBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/username_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="12dp"
+                android:textSize="20dp"
+                android:text="username"
+                android:textStyle="bold"
+                android:textColor="@color/skyblue"
+                android:gravity="center_vertical"
+                />
+
+            <TextView
+                android:id="@+id/comment_notificaiton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="12dp"
+                android:textSize="18dp"
+                android:text="username"
+                android:gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/notificaiotn_post_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/profile"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true"
+            >
+
+        </ImageView>
+
+
+
+</RelativeLayout>

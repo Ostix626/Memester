@@ -1,6 +1,7 @@
 package com.memester
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,13 @@ class PostDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_details)
+
+        val addMemeBtn: androidx.appcompat.widget.AppCompatImageButton = findViewById(R.id.addMeme)
+        val notificationsBtn: androidx.appcompat.widget.AppCompatImageButton =findViewById(R.id.notifications)
+
+        addMemeBtn.setOnClickListener {
+            startActivity(Intent(this@PostDetailsActivity, AddPostActivity::class.java))
+        }
 
         val preferences = getSharedPreferences("PREFS", Context.MODE_PRIVATE)
         if (preferences != null)
