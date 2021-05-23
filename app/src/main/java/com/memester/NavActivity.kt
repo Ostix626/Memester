@@ -54,6 +54,7 @@ class NavActivity : AppCompatActivity() {
 
         addMemeBtn.setOnClickListener {
             startActivity(Intent(this@NavActivity, AddPostActivity::class.java))
+//            startActivity(Intent(this@NavActivity, MainActivity::class.java))
         }
         notificationsBtn.setOnClickListener {
             startActivity(Intent(this@NavActivity, NotificationsActivity::class.java))
