@@ -65,11 +65,7 @@ class AddPostActivity : AppCompatActivity() {
                 if (processedBitmap != null)
                 {
                     image_post.setImageBitmap(processedBitmap)
-                    Toast.makeText(
-                        applicationContext,
-                        "Done",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(applicationContext,"Done", Toast.LENGTH_LONG).show()
                 }
                 else
                 {
@@ -181,12 +177,31 @@ class AddPostActivity : AppCompatActivity() {
 
                 val paintText = Paint(Paint.ANTI_ALIAS_FLAG)
                 paintText.setColor(ContextCompat.getColor(this, R.color.white))
-                paintText.setTextSize(bitmap.width.toFloat()/20)
+                paintText.setTextSize(bitmap.width.toFloat()/10)
                 paintText.setStyle(Paint.Style.FILL)
                 paintText.setShadowLayer(10f, 10f, 10f, Color.BLACK)
 
-                val rectText = Rect()
+
+                var rectText = Rect()
                 paintText.getTextBounds(captionString, 0, captionString!!.length, rectText)
+
+                var div: Int = 10
+                while(rectText.width() >= (bitmap.width*0.95)) //smanjuje text ne stane u sliku
+                {
+                    div += 1
+                    paintText.setTextSize(bitmap.width.toFloat()/div)
+                    rectText = Rect()
+                    paintText.getTextBounds(captionString, 0, captionString!!.length, rectText)
+                }
+
+//                if (rectText.width() >= (bitmap.width*0.95))
+//                {
+////                    TODO: splitat string u vise redova ako izlazi iz slike
+////                    https://stackoverflow.com/questions/11100428/add-text-to-image-in-android-programmatically/52356614#52356614
+//                    paintText.setTextSize(bitmap.width.toFloat()/div)
+//                    rectText = Rect()
+//                    paintText.getTextBounds(captionString, 0, captionString!!.length, rectText)
+//                }
 
                 newCanvas.drawText(captionString,10f, rectText.height().toFloat(), paintText)
 
