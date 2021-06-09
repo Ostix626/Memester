@@ -15,6 +15,7 @@ import com.memester.Model.Notification
 import com.memester.Model.Post
 import com.memester.Model.User
 import com.memester.PostDetailsActivity
+import com.memester.ProfileActivity
 import com.memester.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_comments.*
@@ -76,7 +77,15 @@ class NotificationAdapter(
             }
             else
             {
-                //TODO: KISMOOOOOOO HITI usera na profile activity !!!!!!!!!!!!!!!! jos danas ku mores ala....
+                val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+                pref.putString("profileId", notification.getUserId())
+                pref.apply()
+
+                val prefs = notification.getUserId()
+
+                val intent = Intent(holder.itemView.context, ProfileActivity::class.java)
+                intent.putExtra("uid", prefs)
+                mContext.startActivity(intent)
             }
         }
     }

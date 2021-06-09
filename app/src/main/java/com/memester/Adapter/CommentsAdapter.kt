@@ -1,6 +1,7 @@
 package com.memester.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
@@ -16,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.memester.Model.Comment
 import com.memester.Model.User
+import com.memester.ProfileActivity
 import com.memester.R
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
@@ -39,6 +41,30 @@ class CommentsAdapter(private val mContext: Context, private val mComment : Muta
         val comment = mComment!![position]
         holder.commentTV.text = comment.getComment()
         getUserInfo(holder.imageProfile, holder.userNameTV, comment.getPublisher())
+
+        holder.userNameTV.setOnClickListener(View.OnClickListener {
+            val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            pref.putString("profileId", comment.getPublisher())
+            pref.apply()
+
+            val prefs = comment.getPublisher()
+
+            val intent = Intent(holder.userNameTV.context, ProfileActivity::class.java)
+            intent.putExtra("uid", prefs)
+            holder.userNameTV.context.startActivity(intent)
+        })
+
+        holder.imageProfile.setOnClickListener(View.OnClickListener {
+            val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            pref.putString("profileId", comment.getPublisher())
+            pref.apply()
+
+            val prefs = comment.getPublisher()
+
+            val intent = Intent(holder.userNameTV.context, ProfileActivity::class.java)
+            intent.putExtra("uid", prefs)
+            holder.userNameTV.context.startActivity(intent)
+        })
     }
 
     private fun getUserInfo(imageProfile: CircleImageView, userNameTV: TextView, publisher: String)

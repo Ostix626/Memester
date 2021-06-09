@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.memester.CommentsActivity
 import com.memester.Model.Post
 import com.memester.Model.User
+import com.memester.ProfileActivity
 import com.memester.R
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
@@ -86,6 +87,30 @@ class PostAdapter
                 FirebaseDatabase.getInstance().reference.child("Saves").child(firebaseUser!!.uid).child(post.getPostid()).removeValue()
             }
         }
+
+        holder.profileImage.setOnClickListener(View.OnClickListener {
+            val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            pref.putString("profileId", post.getPublisher())
+            pref.apply()
+
+            val prefs = post.getPublisher()
+
+            val intent = Intent(holder.itemView.context, ProfileActivity::class.java)
+            intent.putExtra("uid", prefs)
+            mContext.startActivity(intent)
+        })
+
+        holder.userName.setOnClickListener(View.OnClickListener {
+            val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            pref.putString("profileId", post.getPublisher())
+            pref.apply()
+
+            val prefs = post.getPublisher()
+
+            val intent = Intent(holder.itemView.context, ProfileActivity::class.java)
+            intent.putExtra("uid", prefs)
+            mContext.startActivity(intent)
+        })
     }
 
     private fun numberOfLikes(likes: TextView, postid: String)

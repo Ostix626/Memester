@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:id="@+id/profile_activity">
 
 
     <include
@@ -55,7 +56,7 @@
                                 app:strokeWidth="1dp" />
             -->
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilePic"
+                android:id="@+id/profile_picture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:radius="1000dp"
@@ -70,13 +71,13 @@
 
         </RelativeLayout>
 
-        <LinearLayout
+         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/username_profile_fragment"
+                android:id="@+id/username_profile"
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:layout_gravity="center_horizontal"
@@ -180,23 +181,21 @@
 
     </LinearLayout>
 
-
     <Button
         android:id="@+id/follow_btn_profile"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/btn_padding"
-        android:layout_marginBottom="5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:padding="@dimen/btn_padding"
         android:text="Follow"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:strokeColor="@color/white" />
-
 
     <ScrollView
         android:id="@+id/scroll_view"
@@ -206,6 +205,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/follow_btn_profile" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_uploaded_pics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/follow_btn_profile"
+        app:flow_horizontalAlign="center"
+        />
 
     <!--
        <com.google.android.material.bottomnavigation.BottomNavigationView

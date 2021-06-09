@@ -2,6 +2,7 @@ package com.memester.Adapter
 
 import android.app.PendingIntent.getActivity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import android.util.Log.INFO
@@ -12,6 +13,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,8 +21,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.memester.*
 import com.memester.Model.User
-import com.memester.R
 import com.squareup.picasso.Picasso
 import okhttp3.internal.platform.Platform.INFO
 import java.util.logging.Level.INFO
@@ -45,6 +47,18 @@ class UserAdapter (private var mContext: Context, private var mUser: List<User>,
         Picasso.get().load(user.getImage()).placeholder(R.drawable.profile).into(holder.userProfileImage)
 
         checkFollowStatus(user.getUid(), holder.followButton)
+
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+            pref.putString("profileId", user.getUid())
+            pref.apply()
+
+            val prefs = user.getUid()
+
+            val intent = Intent(holder.itemView.context, ProfileActivity::class.java)
+            intent.putExtra("uid", prefs)
+            mContext.startActivity(intent)
+        })
 
         holder.followButton.setOnClickListener {
             if(holder.followButton.text.toString() == "Follow")
