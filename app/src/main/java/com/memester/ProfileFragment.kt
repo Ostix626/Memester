@@ -17,6 +17,7 @@ import com.memester.Adapter.MyMemesAdapter
 import com.memester.Model.Post
 import com.memester.Model.User
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -105,6 +106,20 @@ class ProfileFragment : Fragment() {
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+
+        view.followers_profile_fragment.setOnClickListener {
+            val intent = Intent(context, ShowUsersActivity::class.java)
+            intent.putExtra("id", currentUser.uid)
+            intent.putExtra("title", "followers")
+            startActivity(intent)
+        }
+
+        view.following_profile_fragment.setOnClickListener {
+            val intent = Intent(context, ShowUsersActivity::class.java)
+            intent.putExtra("id", currentUser.uid)
+            intent.putExtra("title", "following")
+            startActivity(intent)
+        }
 
 
         var recyclerViewUploadedImages : RecyclerView

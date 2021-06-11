@@ -105,6 +105,20 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+        followers_profile_fragment.setOnClickListener {
+            val intent = Intent(this, ShowUsersActivity::class.java)
+            intent.putExtra("id", profileId)
+            intent.putExtra("title", "followers")
+            startActivity(intent)
+        }
+
+        following_profile_fragment.setOnClickListener {
+            val intent = Intent(this, ShowUsersActivity::class.java)
+            intent.putExtra("id", profileId)
+            intent.putExtra("title", "following")
+            startActivity(intent)
+        }
+
         var recyclerViewUploadedImages : RecyclerView
         recyclerViewUploadedImages = findViewById(R.id.recycler_view_uploaded_pics)
         recyclerViewUploadedImages.setHasFixedSize(true)

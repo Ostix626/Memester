@@ -20,6 +20,7 @@ import com.memester.Model.Post
 import com.memester.Model.User
 import com.memester.ProfileActivity
 import com.memester.R
+import com.memester.ShowUsersActivity
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_account_settings.*
@@ -111,6 +112,13 @@ class PostAdapter
             intent.putExtra("uid", prefs)
             mContext.startActivity(intent)
         })
+
+        holder.likes.setOnClickListener {
+            val intent = Intent(mContext, ShowUsersActivity::class.java)
+            intent.putExtra("id", post.getPostid())
+            intent.putExtra("title", "likes")
+            mContext.startActivity(intent)
+        }
     }
 
     private fun numberOfLikes(likes: TextView, postid: String)
