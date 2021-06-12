@@ -6,13 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".SavedPostsActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_bar_layout_saved_posts"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:src="@drawable/memester"/>
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_uploaded_pics"
@@ -24,6 +36,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout_saved_posts" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
