@@ -72,7 +72,7 @@ class AccountSettingsActivity : AppCompatActivity()
         }
 
         delete_account_btn.setOnClickListener {
-            Toast.makeText(this, "LOL, we can't let you do that", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Sorry, we can't let you do that", Toast.LENGTH_SHORT).show()
         }
 
 
