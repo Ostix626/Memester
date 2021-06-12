@@ -1,7 +1,9 @@
 package com.memester
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.memester.Adapter.UserAdapter
 import com.memester.Model.User
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_show_users.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 
 class ShowUsersActivity : AppCompatActivity() {
@@ -30,13 +33,17 @@ class ShowUsersActivity : AppCompatActivity() {
         id = intent.getStringExtra("id")
         title = intent.getStringExtra("title")
 
+
         val toolbar : Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.title = title
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
+        val toolbarTitle : TextView = findViewById(R.id.title_text)
+        toolbarTitle.text = title.capitalize() + ":"
+//        setSupportActionBar(toolbar)
+//
+//        supportActionBar!!.title = title.toUpperCase()
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//        toolbar.setNavigationOnClickListener {
+//            finish()
+//        }
 
         var recyclerView : RecyclerView
         recyclerView = findViewById(R.id.recycler_view)

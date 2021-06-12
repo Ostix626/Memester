@@ -2,6 +2,7 @@ package com.memester
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -35,7 +36,6 @@ class ProfileActivity : AppCompatActivity() {
     var myMemesAdapter : MyMemesAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val bottomSheetFragment = BottomSheetFragment()
         db = FirebaseDatabase.getInstance().reference
         super.onCreate(savedInstanceState)
 
@@ -61,9 +61,17 @@ class ProfileActivity : AppCompatActivity() {
         getFollowings()
         userInfo()
 
+//        if(follow_btn_profile.text.toString() == "Follow") {
+//            follow_btn_profile.setTextColor(Color.parseColor("#00bfff"))
+//        } else {
+//            follow_btn_profile.setTextColor(Color.WHITE)
+//        }
+
         follow_btn_profile.setOnClickListener {
             if(follow_btn_profile.text.toString() == "Follow")
             {
+                follow_btn_profile.setTextColor(Color.WHITE)
+
                 firebaseUser?.uid.let { it ->
                     FirebaseDatabase.getInstance().reference.child("Follow").child(it.toString()).child("Following").child(profileId)
                         .setValue(true).addOnCompleteListener { task ->
@@ -85,6 +93,8 @@ class ProfileActivity : AppCompatActivity() {
             }
             else if(follow_btn_profile.text.toString() == "Following")
             {
+                follow_btn_profile.setTextColor(Color.parseColor("#00bfff"))
+
                 firebaseUser?.uid.let { it ->
                     FirebaseDatabase.getInstance().reference.child("Follow").child(it.toString()).child("Following").child(profileId)
                         .removeValue().addOnCompleteListener { task ->
@@ -149,8 +159,10 @@ class ProfileActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.child(profileId).exists()){
                         follow_btn_profile?.text = "Following"
+                        follow_btn_profile.setTextColor(Color.WHITE)
                     }else {
                         follow_btn_profile?.text = "Follow"
+                        follow_btn_profile.setTextColor(Color.parseColor("#00bfff"))
                     }
                 }
 
