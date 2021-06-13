@@ -56,7 +56,8 @@ class RegistrationActivity : AppCompatActivity() {
                         else
                         {
                             val message = task.exception!!.toString()
-                            Toast.makeText(this, "Oopsie doopsie: $message", Toast.LENGTH_LONG).show()
+//                            Toast.makeText(this, "Oopsie doopsie: $message", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "Oopsie doopsie: Firebase says NO!", Toast.LENGTH_LONG).show()
                             mAuth.signOut()
                             progressDialog.dismiss()
                         }
