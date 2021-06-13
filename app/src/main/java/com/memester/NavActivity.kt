@@ -129,6 +129,7 @@ class NavActivity : AppCompatActivity() {
 
                     if (text != null && appRunningBackground) {
                         getDataForNotification(userID, text)
+//                        notificationsBtn.setImageResource(R.drawable.bell)
                     }
                 }
             }
@@ -141,23 +142,32 @@ class NavActivity : AppCompatActivity() {
     {
 //        notificationsBtn.setImageResource(R.drawable.bell_red)
         val intent = Intent(this, NavActivity::class.java)
-        val pendingIntent = TaskStackBuilder.create(this).run {
-            addNextIntentWithParentStack(intent)
-            getPendingIntent(0, PendingIntent.FLAG_CANCEL_CURRENT)
-        }
+        val intentNotif = Intent(this, NotificationsActivity::class.java)
+//        val pendingIntent = TaskStackBuilder.create(this).run {
+//            addNextIntentWithParentStack(intent)
+//            getPendingIntent(0, PendingIntent.FLAG_CANCEL_CURRENT)
+//        }
+
+        val PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+//        intent.apply {
+//            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        }
+//        val pendingIntent = PendingIntent.getActivity(this,0,intent,0)
 
         val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(text)
             .setSmallIcon(R.drawable.icon)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setContentIntent(pendingIntent)
+            .setContentIntent(PendingIntent)
+            .setAutoCancel(true)
             .build()
 
         val notificationManager = NotificationManagerCompat.from(applicationContext)
         val notificationId: Long = System.currentTimeMillis()
 
-        notificationManager.notify(notificationId.toInt(), notification)
+        notificationManager.notify(0, notification)
     }
 
     private fun getDataForNotification(publisherId: String, text: String){
@@ -170,6 +180,7 @@ class NavActivity : AppCompatActivity() {
                 if (p0.exists()) {
                     val user = p0.getValue<User>(User::class.java)
                     pushNotification(text, user!!.getUsername())
+
                 }
             }
 
@@ -177,3 +188,5 @@ class NavActivity : AppCompatActivity() {
         })
     }
 }
+
+
