@@ -10,4 +10,6 @@
     <dimen name="profile_meta">24dp</dimen>
     <dimen name="profile_meta_label">10dp</dimen>
     <dimen name="btn_padding">5dp</dimen>
+    <dimen name="buttons_padding">10dp</dimen>
+    <dimen name="new_text_size">18sp</dimen>
 </resources>

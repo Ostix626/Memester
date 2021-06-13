@@ -2,4 +2,12 @@
     <string name="app_name">Memester</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_transform_size">Size:</string>
+    <string name="text_transform_rotation">Rotation:</string>
+    <string name="menu_text_edit">Edit</string>
+    <string name="menu_text_resize">Resize</string>
+    <string name="menu_text_remove">Remove</string>
+    <string name="add_text_dialog_title">Add text</string>
+    <string name="add_text_ok_button" translatable="false">OK</string>
+    <string name="edit_text_dialog_title">Edit text</string>
 </resources>

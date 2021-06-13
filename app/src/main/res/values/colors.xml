@@ -11,4 +11,6 @@
     <color name="skyblue">#00bfff</color>
     <color name="darkGrey">#222222</color>
     <color name="red">#ED4856</color>
+    <color name="buttons_layout_background">#464646</color>
+    <color name="new_text_color">#FFFFFF</color>
 </resources>

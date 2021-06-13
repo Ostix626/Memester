@@ -12,7 +12,6 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import br.com.mobileti.imageeditor.ImageEditor
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -58,28 +57,31 @@ class AddPostActivity : AppCompatActivity() {
         }
 
         processing.setOnClickListener {
-            /*imageUri?.let {
-                val processedBitmap = ProcessingBitmap()
-//                imageUri = processedBitmap.toURI()
-//                imageUri = Uri.fromFile(processedBitmap);
-//                postBitmap = processedBitmap?.let { it1 -> getImageUriFromBitmap(this, it1) }
-                postBitmap = processedBitmap
-                if (processedBitmap != null)
-                {
-                    image_post.setImageBitmap(processedBitmap)
-                    Toast.makeText(applicationContext,"Done", Toast.LENGTH_LONG).show()
-                }
-                else
-                {
-                    Toast.makeText(
-                        applicationContext,
-                        "Something wrong in processing!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }*/
+//            imageUri?.let {
+//                val processedBitmap = ProcessingBitmap()
+////                imageUri = processedBitmap.toURI()
+////                imageUri = Uri.fromFile(processedBitmap);
+////                postBitmap = processedBitmap?.let { it1 -> getImageUriFromBitmap(this, it1) }
+//                postBitmap = processedBitmap
+//                if (processedBitmap != null)
+//                {
+//                    image_post.setImageBitmap(processedBitmap)
+//                    Toast.makeText(applicationContext,"Done", Toast.LENGTH_LONG).show()
+//                }
+//                else
+//                {
+//                    Toast.makeText(
+//                        applicationContext,
+//                        "Something wrong in processing!",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                }
+//            }
 
-            ImageEditor(this) // Context
+            val processedBitmap = ProcessingBitmap()
+            postBitmap = processedBitmap
+
+            ImageEditor(this, postBitmap!!.width, postBitmap!!.height) // Context
                 .setImageUri(imageUri) // Image URI
                 .create() // Call the Image Editor
         }
@@ -166,22 +168,22 @@ class AddPostActivity : AppCompatActivity() {
         }
     }
 
-//    private fun ProcessingBitmap(): Bitmap?
-//    {
-//        var bitmap: Bitmap? = null
-//
-//        var newBitmap: Bitmap? = null
-//
-//        try
-//        {
-//            bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(imageUri!!))
-//
-//            var config: Bitmap.Config? = bitmap!!.config
-//            if (config == null) {
-//                config = Bitmap.Config.ARGB_8888
-//            }
-//
-//            newBitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, config!!)
+    private fun ProcessingBitmap(): Bitmap?
+    {
+        var bitmap: Bitmap? = null
+
+        var newBitmap: Bitmap? = null
+
+        try
+        {
+            bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(imageUri!!))
+
+            var config: Bitmap.Config? = bitmap!!.config
+            if (config == null) {
+                config = Bitmap.Config.ARGB_8888
+            }
+
+            newBitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, config!!)
 //            val newCanvas = Canvas(newBitmap)
 //
 //            newCanvas.drawBitmap(bitmap, 0f, 0f, null)
@@ -224,14 +226,14 @@ class AddPostActivity : AppCompatActivity() {
 //            } else {
 //                Toast.makeText(applicationContext, "Dank meme text is empty!", Toast.LENGTH_LONG).show()
 //            }
-//
-//        } catch (e: FileNotFoundException) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace()
-//        }
-//
-//        return newBitmap
-//    }
+
+        } catch (e: FileNotFoundException) {
+            // TODO Auto-generated catch block
+            e.printStackTrace()
+        }
+
+        return newBitmap
+    }
 
     fun getImageUriFromBitmap(context: Context, bitmap: Bitmap): Uri{
         val bytes = ByteArrayOutputStream()
