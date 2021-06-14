@@ -1,5 +1,6 @@
 package com.memester
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -18,10 +19,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.memester.Adapter.ColorSelectorAdapter
+import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.activity_account_settings.*
 import kotlinx.android.synthetic.main.activity_editor.*
 import kotlinx.coroutines.*
 import java.io.File
 import java.io.FileOutputStream
+import java.net.URI
 import kotlin.math.log
 
 
@@ -153,14 +157,16 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
     private suspend fun getEditedImagePathAsync(): Deferred<String> {
         val bitmap = viewToBitmap(imageContainer)
         val file = saveBitmap(bitmap)
+
         return lifecycleScope.async {
             file.absolutePath
         }
     }
 
+
     private fun viewToBitmap(view: View): Bitmap {
         val img : ImageView = findViewById(R.id.memeImageView)
-        val bitmap = Bitmap.createBitmap(img.width, img.height, Bitmap.Config.ARGB_8888)
+        val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
 //        Log.e("WIDTH", img.width.toString())
 //        Log.e("height", img.height.toString())
         val canvas = Canvas(bitmap)
@@ -275,7 +281,7 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
         scaleSeekBar.apply {
             progress = textView.rotation.toInt()
             incrementProgressBy(5)
-            max = 100
+            max = 360
 
             setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
@@ -345,6 +351,8 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
             setTextColor(ContextCompat.getColor(context, R.color.new_text_color))
             gravity = Gravity.CENTER
 
+            //layoutParams = centerTextLayoutParam()
+
             layoutParams = if (textArrayList.isEmpty()) {
                 topTextLayoutParam()
             } else {
@@ -363,28 +371,28 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
 
     private fun topTextLayoutParam(): RelativeLayout.LayoutParams {
         val params = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
-        params.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL)
         return params
     }
 
     private fun centerTextLayoutParam(): RelativeLayout.LayoutParams {
         val params = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
-        params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
         return params
     }
 
     private fun bottomTextLayoutParam(): RelativeLayout.LayoutParams {
         val params = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL)
         return params
     }
 }

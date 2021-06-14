@@ -104,6 +104,8 @@ class AddPostActivity : AppCompatActivity() {
             val imagePath = data?.getStringExtra(ImageEditor.URI_ARG) // Edited image path
             image_post.setImageURI(Uri.fromFile(File(imagePath)))
             imageUri = Uri.fromFile(File(imagePath))
+            CropImage.activity(imageUri)
+                .start(this@AddPostActivity)
         }
         else
         {
