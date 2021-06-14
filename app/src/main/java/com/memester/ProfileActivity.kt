@@ -115,14 +115,14 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        followers_profile_fragment.setOnClickListener {
+        followers_layout.setOnClickListener {
             val intent = Intent(this, ShowUsersActivity::class.java)
             intent.putExtra("id", profileId)
             intent.putExtra("title", "followers")
             startActivity(intent)
         }
 
-        following_profile_fragment.setOnClickListener {
+        following_layout.setOnClickListener {
             val intent = Intent(this, ShowUsersActivity::class.java)
             intent.putExtra("id", profileId)
             intent.putExtra("title", "following")

@@ -107,14 +107,14 @@ class ProfileFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        view.followers_profile_fragment.setOnClickListener {
+        view.followers_layout.setOnClickListener {
             val intent = Intent(context, ShowUsersActivity::class.java)
             intent.putExtra("id", currentUser.uid)
             intent.putExtra("title", "followers")
             startActivity(intent)
         }
 
-        view.following_profile_fragment.setOnClickListener {
+        view.following_layout.setOnClickListener {
             val intent = Intent(context, ShowUsersActivity::class.java)
             intent.putExtra("id", currentUser.uid)
             intent.putExtra("title", "following")
