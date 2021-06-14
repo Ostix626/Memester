@@ -77,13 +77,20 @@ class AddPostActivity : AppCompatActivity() {
 //                    ).show()
 //                }
 //            }
+            if(imageUri != null) {
+                val processedBitmap = ProcessingBitmap()
+                postBitmap = processedBitmap
 
-            val processedBitmap = ProcessingBitmap()
-            postBitmap = processedBitmap
-
-            ImageEditor(this, postBitmap!!.width, postBitmap!!.height) // Context
-                .setImageUri(imageUri) // Image URI
-                .create() // Call the Image Editor
+                ImageEditor(this, postBitmap!!.width, postBitmap!!.height) // Context
+                    .setImageUri(imageUri) // Image URI
+                    .create() // Call the Image Editor
+            }else {
+                Toast.makeText(
+                        applicationContext,
+                        "You didn't select meme to upload",
+                        Toast.LENGTH_LONG
+                    ).show()
+            }
         }
 
         CropImage.activity().start(this@AddPostActivity)
