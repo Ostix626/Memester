@@ -159,7 +159,10 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
     }
 
     private fun viewToBitmap(view: View): Bitmap {
-        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val img : ImageView = findViewById(R.id.memeImageView)
+        val bitmap = Bitmap.createBitmap(img.width, img.height, Bitmap.Config.ARGB_8888)
+//        Log.e("WIDTH", img.width.toString())
+//        Log.e("height", img.height.toString())
         val canvas = Canvas(bitmap)
         view.draw(canvas)
         return bitmap

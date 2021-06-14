@@ -121,11 +121,9 @@ class NavActivity : AppCompatActivity() {
                     val userID = datasnapshot.children.last().getValue(Notification::class.java)?.getUserId().toString()
 
                     val runningAppProcessInfo = ActivityManager.RunningAppProcessInfo()
-                    Log.e("runningAppProcessInfo", runningAppProcessInfo.toString())
                     ActivityManager.getMyMemoryState(runningAppProcessInfo)
                     val appRunningBackground = runningAppProcessInfo.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
-                    Log.e("importance", runningAppProcessInfo.importance.toString())
-                    Log.e("appRunningBackground", appRunningBackground.toString())
+
 
                     if (text != null && appRunningBackground) {
                         getDataForNotification(userID, text)
