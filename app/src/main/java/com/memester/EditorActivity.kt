@@ -371,7 +371,7 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
 
     private fun topTextLayoutParam(): RelativeLayout.LayoutParams {
         val params = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         params.addRule(RelativeLayout.CENTER_HORIZONTAL)
@@ -380,7 +380,7 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
 
     private fun centerTextLayoutParam(): RelativeLayout.LayoutParams {
         val params = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
@@ -389,7 +389,7 @@ class EditorActivity : AppCompatActivity(), View.OnDragListener, View.OnLongClic
 
     private fun bottomTextLayoutParam(): RelativeLayout.LayoutParams {
         val params = RelativeLayout.LayoutParams(
-            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         params.addRule(RelativeLayout.CENTER_HORIZONTAL)
